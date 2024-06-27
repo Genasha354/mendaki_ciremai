@@ -162,25 +162,3 @@
           }
           var BufferApuy = createBufferApuyLayer(area_jalur_apuy, '#38ff46');
   
-                  // buffer uji
-                  function createBufferUjiLayer(geoJSONData, color) {
-            return L.geoJSON(geoJSONData, {
-              style: function (feature) {
-                return {
-                  color: color,
-                  weight: 3,
-                };
-              },
-              onEachFeature: function (feature, layer) {
-                var properties = feature.properties;
-                var popupContent = '<div style="text-align: center;">' +
-                  "<strong>" + properties["Jalur"] + "</strong><br>" +
-                  "Jarak Tempuh: " + properties["Jarak Tempuh"] + "<br>" +
-                  "Beda Tinggi (m): " + properties["Beda Tinggi"] + "<br>" +
-                  "Relief Kelerengan: " + properties["Kelerengan"] + "<br>";
-                  
-                layer.bindPopup(popupContent);
-              }
-            }).addTo(map);
-          }
-          var BufferUji = createBufferApuyLayer(bufferuji, '#f9172b');
