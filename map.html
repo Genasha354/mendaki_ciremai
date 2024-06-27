@@ -413,8 +413,8 @@
         
         // Layer Control
         var baseMaps = {
-          "World_Imagery": World_Imagery,
-          "World_Topo_Map" : topographicContour,
+          "Citra Satelit": World_Imagery,
+          "Topografi" : topographicContour,
         };
 
         var JalurApuy = L.layerGroup([POI_Apuy, Apuy]).addTo(map);
@@ -423,7 +423,7 @@
         var overlays = {
           "Jalur Apuy": JalurApuy,
           "Jalur Palutungan": JalurPalutungan,
-          "contour": Kontur,
+          "Garis Kontur": Kontur,
         };
 
         var layerControl = L.control.layers(baseMaps, overlays).addTo(map);        
