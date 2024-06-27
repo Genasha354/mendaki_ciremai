@@ -1,4 +1,31 @@
-//--Algoritma Geofence-----------------------------------------------------------------------------------------------------------------------
+// Buffer uji
+function createBufferUjiLayer(geoJSONData, color, opacity) {
+    return L.geoJSON(geoJSONData, {
+        style: function (feature) {
+            return {
+                color: color,
+                weight: 3,
+                fillOpacity: opacity // Menambahkan fillOpacity untuk mengatur opasitas area
+            };
+        },
+        onEachFeature: function (feature, layer) {
+            var properties = feature.properties;
+            var popupContent = '<div style="text-align: center;">' +
+                "<strong>" + properties["Jalur"] + "</strong><br>" +
+                "Jarak Tempuh: " + properties["Jarak Tempuh"] + "<br>" +
+                "Beda Tinggi (m): " + properties["Beda Tinggi"] + "<br>" +
+                "Relief Kelerengan: " + properties["Kelerengan"] + "<br>" +
+                "</div>";
+            layer.bindPopup(popupContent);
+        }
+    }).addTo(map);
+}
+
+// Contoh pemanggilan fungsi dengan opasitas yang diatur
+var BufferUji = createBufferUjiLayer(bufferuji, '#f9172b', 0.0001); // Opasitas diset ke 0.5
+
+
+// Algoritma Geofence
 // Tentukan fungsi untuk memeriksa lokasi pengguna
 function checkLocation() {
     map.locate({setView: true});
@@ -10,7 +37,7 @@ function onLocationFound(e) {
 
     // Periksa apakah lokasi pengguna berada dalam batas-batas fitur apa pun dalam lapisan GeoJSON
     var userWithinArea = false;
-    bufferuji.eachLayer(function(layer) {
+    BufferUji.eachLayer(function(layer) {
         if (layer.getBounds().contains(userLocation)) {
             userWithinArea = true;
         }
@@ -22,17 +49,29 @@ function onLocationFound(e) {
     } else {
         // Jika pengguna berada dalam fitur apa pun dalam lapisan GeoJSON, tampilkan notifikasi dan pop-up
         if (userWithinArea && Notification.permission === "granted") {
-            showNotification("Saat ini anda sedang berada dalam Area Rawan Kecelakaan");
-            showPopup("Saat ini anda sedang berada dalam Area Rawan Kecelakaan");
+            showNotification("Saat ini anda sedang berada diluar jalur pendakian!!!");
+            showPopup("Saat ini anda sedang berada diluar jalur pendakian!!!");
         } else if (userWithinArea && Notification.permission !== "denied") {
             Notification.requestPermission().then(function(permission) {
                 if (permission === "granted") {
-                    showNotification("Saat ini anda sedang berada dalam Area Rawan Kecelakaan");
-                    showPopup("Saat ini anda sedang berada dalam Area Rawan Kecelakaan");
+                    showNotification("Saat ini anda sedang berada diluar jalur pendakian!!!");
+                    showPopup("Saat ini anda sedang berada diluar jalur pendakian!!!");
                 }
             });
         }
     }
+}
+
+// Fungsi untuk menampilkan notifikasi
+function showNotification(message) {
+    var options = {
+        body: message,
+        icon: 'asset/img/user-icon.png' // Ganti dengan path ke ikon notifikasi yang diinginkan
+    };
+    var notification = new Notification("Peringatan", options);
+    notification.onclick = function() {
+        window.focus();
+    };
 }
 
 // Fungsi untuk menampilkan pop-up
@@ -56,7 +95,7 @@ function showPopup(message) {
     // Tambahkan elemen pop-up ke dalam body
     document.body.appendChild(popup);
 
-    // Hapus pop-up setelah 5 detik
+    // Hapus pop-up setelah 15 detik
     setTimeout(function() {
         document.body.removeChild(popup);
     }, 15000);
@@ -66,7 +105,7 @@ function showPopup(message) {
 map.on('locationfound', onLocationFound);
 
 // Daftarkan Service Worker
-if ('service_worker' in navigator) {
+if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('asset/js/service_worker.js')
     .then(function(registration) {
         console.log('Service Worker registered successfully:', registration);
