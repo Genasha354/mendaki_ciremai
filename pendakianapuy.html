@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>Pendakian Apuy </title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!--CSS-->
+    <link rel="stylesheet" href="asset/css/map.css"/>
+    <link href="asset/css/styles.css" rel="stylesheet" />
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!--Leaflet Utama-->
+    <link rel="stylesheet" href="asset/leaflet/leaflet.css"/>
+    <script src="asset/leaflet/leaflet.js"></script>
+    
+    <!--Lokasi-->
+    <link rel="stylesheet" href="asset/leaflet/controlLocate/L.Control.Locate.min.css" />
+    <script src="asset/leaflet/controlLocate/L.Control.Locate.min.js" charset="utf-8"></script>
+
+    <!--Legenda Layer-->
+    <link rel="stylesheet" href="asset/legend/leaflet.legend.css">
+    <script type="text/javascript" src="asset/legend/leaflet.legend.js"></script>
+
+    <!--Scale-->
+    <link rel="stylesheet" href="asset/leaflet/leaflet-betterscale-master/L.Control.BetterScale.css" />
+    <script src="asset/leaflet/leaflet-betterscale-master/L.Control.BetterScale.js"></script>
+
+    <!--ResetView-->
+    <link rel="stylesheet" href="asset/leaflet/ResetView/L.Control.ResetView.min.css">
+    <script type="text/javascript" src="asset/leaflet/ResetView/L.Control.ResetView.min.js"></script>
+
+  </head>
+    <body class="d-flex flex-column h-100">
+      <!-- Navigation-->
+      <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a class="nav-link" href="index.html">Beranda</a>
+        <a class="nav-link" href="map.html">Peta</a>
+        <a class="nav-link" href="pendakian.html">Pendakian</a>
+        <a class="nav-link" href="download.html">Download Peta</a>
+        <a class="nav-link" href="informasi.html">Informasi Jalur</a>
+        <a class="nav-link" href="about.html">Tentang</a>
+    </div>
+    <div class="main" id="content">
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Menu</span>
+
+    <!-- Style dan Js Navigation -->
+    <script src="asset/js/Slide_Nav.js"></script>
+    <link rel="stylesheet" href="asset/css/Slide_Nav.css" />
+
+    <!-- Petunjuk -->
+    <script src="asset/js/Petunjuk.js"></script>
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2 class="modal-title"> Informasi Terkait Jalur Pendakian dapat dilihat melalui popup dengan mengklik lokasi penting dan jalur pendakian</h2>
+            </div>
+            <div class="modal-title">
+              <h2 class="modal-title justify-text"> Panduan Lengkap <a href="panduan.html" target="_blank"> Klik Disini </a></h2>
+            </div>
+          </div>
+        </div>
+      </div>
+        
+      <div id="map"></div>
+
+      <div id="waktu-tempuh-container">
+        <h2>Waktu Tempuh <br> Hiking</h2>
+        <div id="legenda-container"></div>
+      </div>
+
+      <div id="waktu-tempuh-container-layer2">
+        <h2>Waktu Tempuh <br> Offroad</h2>
+        <div id="legenda-container-layer2"></div>
+      </div>
+      
+      <div id="legend-container-contour">
+        <h2>Interval : 50 Meter</h2>
+        <div class="legend-item">
+          <div class="legend-color" style="background: #FF9130;"></div>
+          <div class="legend-label">Kontur Minor</div>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color" style="background: #FF5B22;"></div>
+          <div class="legend-label">Kontur Mayor</div>
+        </div>
+      </div>
+      
+      <!--Data GeoJSON -------------------------------------------------------------------------------------------------------->
+      <!--POI -->
+      <script src="asset/Data GeoJSON/POI_Jalur_Apuy.js"></script>
+
+      <!--Jalur-->
+      <script src="asset/Data GeoJSON/Jalur_Apuy.js"></script>
+
+      <!--Contour-->
+      <script src="asset/Data GeoJSON/kontur_mayor_minor.js"></script>     
+
+      <!--Area Jalur-->
+      <script src="asset/Data GeoJSON/area_jalur_apuy.js"></script>
+
+      <!--Area uji-->
+      <script src="asset/Data GeoJSON/bufferuji.js"></script>
+      
+      <!--Contour-->
+      <script src="asset/Data GeoJSON/Contour.js"></script>
+
+      <!-- tools peta-->
+      <script src="asset/js/tools_peta.js"></script>  
+
+      <!-- basemap-->
+      <script src="asset/js/basemap.js"></script>  
+
+      <!-- geojson-->
+      <script src="asset/js/geojsonapuy.js"></script>   
+
+      <!-- geofence-->
+      <script src="asset/js/geofenceapuy.js"></script>   
+
+      <!-- legenda-->
+      <script src="asset/js/legenda.js"></script>   
+
+      <!-- layer control-->
+      <script src="asset/js/layer_control.js"></script> 
+     
+      <!-- legenda waktu-->
+      <script src="asset/js/legenda_waktu.js"></script> 
+
+    <!-- Footer-->
+    <footer class="bg-white py-4">
+      <div class="container px-5">
+          <div class="row align-items-center left-content-between flex-column flex-sm-row">
+              <div class="col-auto">
+                <div class="small m-0 text-black">&copy; Website mengenai Jalur Pendakian Ciremai Via Apuy dan Palutungan</div>
+              </div>
+          </div>
+      </div>
+  </footer>
+      <link rel="stylesheet" href="asset/css/footer.css" />
+
+    <!-- Core theme JS-->
+    <script src="asset/js/scripts.js"></script>
+
+    <!-- Real-time Access -->
+    <script src="asset/js/Access_realtime.js" ></script>
+    </body>
+</html>

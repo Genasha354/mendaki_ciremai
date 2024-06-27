@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Beranda</title>
+
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="asset/css/styles.css" rel="stylesheet" />
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            background-image: url('asset/img/background/background%20homepage.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: repeat;
+        }
+        .sidenav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+        .sidenav a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+        .sidenav a:hover {
+            color: #f1f1f1;
+        }
+        .sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+        .main {
+            flex: 1;
+            transition: margin-left .5s;
+            padding: 16px;
+            width: 100%;
+        }
+        footer {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+        .bg-featured-blog img {
+            width: 100%;
+            height: auto;
+            display: none;
+            opacity: 0;
+            transition: opacity 1s;
+        }
+        .bg-featured-blog img:first-child {
+            display: block;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a class="nav-link" href="index.html">Beranda</a>
+        <a class="nav-link" href="map.html">Peta</a>
+        <a class="nav-link" href="download.html">Download Peta</a>
+        <a class="nav-link" href="pendakian.html">Pendakian</a>
+        <a class="nav-link" href="informasi.html">Informasi Jalur</a>
+        <a class="nav-link" href="about.html">Tentang</a>
+    </div>
+    <div class="main" id="content">
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Menu</span>
+
+        <section class="py-5">
+            <div class="container px-4 px-lg-5">
+                <div class="card border-0 shadow rounded-3 overflow-hidden">
+                    <div class="card-body p-0">
+                        <div class="row gx-0">
+                            <div class="col-lg-10 col-xl-6 py-lg-9">
+                                <div class="p-4 p-md-5">
+                                    <div class="h2 fw-bolder text-center">WebGIS Jalur Pendakian Gunung Ciremai Via Apuy dan Palutungan</div>
+                                    <p></p>
+                                    <p>Taman Nasional Gunung Ciremai merupakan satu di antara banyak taman nasional yang berada di kawasan Gunung di Indonesia. Taman Nasional ini secara administratif termasuk dalam Kabupaten Cirebon, Kuningan, dan Majalengka yang berada di Jawa Barat.</p>
+                                    <p>WebGIS ini menyediakan informasi terkait jalur pendakian Gunung Ciremai, sehingga dapat membantu para calon pendaki dalam memilih jalur yang sesuai dengan kemampuan serta membantu pendaki dalam mengetahui posisinya pada saat di jalur.</p>
+                                    <div class="d-grid gap-4 d-sm-flex justify-content-sm-center center-content-xl-start">
+                                        <a href="map.html" class="btn btn-secondary">Peta</a>
+                                        <a href="download.html" class="btn btn-secondary">Download Peta</a>
+                                        <a href="pendakian.html" class="btn btn-secondary">Pendakian</a>
+                                        <a href="informasi.html" class="btn btn-secondary">Informasi Jalur</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <script>
+            const imageSlider = document.getElementById('image-slider');
+            const images = imageSlider.getElementsByTagName('img');
+            let currentImage = 0;
+
+            function changeImage() {
+                images[currentImage].style.opacity = 0;
+                setTimeout(() => {
+                    images[currentImage].style.display = 'none';
+                    currentImage = (currentImage + 1) % images.length;
+                    images[currentImage].style.display = 'block';
+                    setTimeout(() => {
+                        images[currentImage].style.opacity = 1;
+                    }, 10);
+                }, 1000);
+            }
+
+            setInterval(changeImage, 5000);
+
+            function openNav() {
+                document.getElementById("mySidenav").style.width = "250px";
+                document.querySelector(".main").style.marginLeft = "250px";
+            }
+
+            function closeNav() {
+                document.getElementById("mySidenav").style.width = "0";
+                document.querySelector(".main").style.marginLeft= "0";
+            }
+        </script>
+    </div>
+
+    <!-- Footer-->
+    <footer class="bg-white py-4">
+        <div class="container px-5">
+            <div class="row align-items-center left-content-between flex-column flex-sm-row">
+                <div class="col-auto">
+                    <div class="small m-0 text-black">&copy; Tugas Akhir | Jalur Pendakian Ciremai Via Apuy dan Palutungan</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="asset/js/scripts.js"></script>
+</body>
+</html>

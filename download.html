@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Download Map</title>
+    
+    <link href="asset/css/styles.css" rel="stylesheet" />
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            background-image: url('asset/img/background/background%20homepage.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: repeat;
+        }
+        .sidenav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+        .sidenav a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+        .sidenav a:hover {
+            color: #f1f1f1;
+        }
+        .sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+        .main {
+            flex: 1;
+            transition: margin-left .5s;
+            padding: 16px;
+            width: 100%;
+        }
+        footer {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a class="nav-link" href="index.html">Beranda</a>
+        <a class="nav-link" href="map.html">Peta</a>
+        <a class="nav-link active" href="download.html">Download Peta</a>
+        <a class="nav-link" href="pendakian.html">Pendakian</a>
+        <a class="nav-link" href="informasi.html">Informasi Jalur</a>
+        <a class="nav-link" href="about.html">Tentang</a>
+    </div>
+    <div class="main">
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Menu</span>
+
+        <!-- Page Content-->
+        <section class="py-5">
+            <div class="container px-4 px-lg-5">
+                <div class="card border-0 shadow rounded-3 overflow-hidden">
+                    <div class="card-body p-0">
+                        <div class="row gx-0">
+                            <dv class="col-lg-10 col-xl-6 py-lg-5">
+                                <div class="p-4 p-md-5">
+                                    <div class="h2 fw-bolder text-center">Download Peta Jalur Pendakian</div>
+                                    <p></p>
+                                    <p>Berikut ini merupakan peta jalur pendakian Gunung Ciremai Via Apuy dan Palutungan dengan format PDF, Peta ini memberikan informasi detail tentang jalur pendakian Gunung Ciremai Via Apuy dan Palutungan.</p>
+                                    <ul class="list-unstyled">
+                                        <li><a href="#" target="_blank">Peta Jalur Pendakian Via Apuy</a></li>
+                                        <li><a href="#" target="_blank">Peta Jalur Pendakian Via Palutungan</a></li>
+                                    </ul>
+                                    <p>Peta di atas dapat digunakan saat berkegiatan, baik dicetak ataupun dibaca menggunakan aplikasi mobile pembaca peta seperti Avenza maps.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer-->
+    <footer class="bg-white py-4">
+        <div class="container px-5">
+            <div class="row align-items-center left-content-between flex-column flex-sm-row">
+                <div class="col-auto">
+                    <div class="small m-0 text-black">&copy; Tugas Akhir | Jalur Pendakian Ciremai Via Apuy dan Palutungan</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="asset/js/scripts.js"></script>
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+            document.querySelector(".main").style.marginLeft = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+            document.querySelector(".main").style.marginLeft = "0";
+        }
+    </script>
+</body>
+</html>
