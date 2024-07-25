@@ -23,7 +23,7 @@ function createAreaLuarApuyLayer(geoJSONData, color, opacity) {
 }
 
 // Contoh pemanggilan fungsi dengan opasitas yang diatur
-var AreaLuarApuy = createAreaLuarApuyLayer(area_luar_apuy, '#38ff46', 0.0005); // Opasitas diset ke 0.5
+var AreaLuarApuy = createAreaLuarApuyLayer(area_luar_apuy, '#38ff46', 0.5); // Opasitas diset ke 0.5
 
 // Algoritma Geofence
 // Tentukan fungsi untuk memeriksa lokasi pengguna
@@ -66,14 +66,14 @@ function onLocationFound(e) {
 
 // Fungsi untuk menampilkan notifikasi
 function showNotification(message) {
-    var options = {
-        body: message,
-        icon: 'asset/img/user-icon.png' // Ganti dengan path ke ikon notifikasi yang diinginkan
-    };
-    var notification = new Notification("Peringatan", options);
-    notification.onclick = function() {
-        window.focus();
-    };
+    if (navigator.serviceWorker && navigator.serviceWorker.ready) {
+        navigator.serviceWorker.ready.then(function(registration) {
+            registration.showNotification("Peringatan", {
+                body: message,
+                icon: 'asset/img/user-icon.png' // Ganti dengan path ke ikon notifikasi yang diinginkan
+            });
+        });
+    }
 }
 
 // Fungsi untuk menampilkan pop-up
