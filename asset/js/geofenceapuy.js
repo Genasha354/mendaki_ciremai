@@ -1,10 +1,11 @@
 // Buffer uji
-function createBufferUjiLayer(geoJSONData, color, opacity) {
+function createAreaLuarApuyLayer(geoJSONData, color, opacity) {
     return L.geoJSON(geoJSONData, {
         style: function (feature) {
             return {
                 color: color,
                 weight: 3,
+                opacity: opacity, // Menambahkan opacity untuk mengatur opasitas outline
                 fillOpacity: opacity // Menambahkan fillOpacity untuk mengatur opasitas area
             };
         },
@@ -22,8 +23,7 @@ function createBufferUjiLayer(geoJSONData, color, opacity) {
 }
 
 // Contoh pemanggilan fungsi dengan opasitas yang diatur
-var BufferUji = createBufferUjiLayer(bufferuji, '#f9172b', 0.0001); // Opasitas diset ke 0.5
-
+var AreaLuarApuy = createAreaLuarApuyLayer(area_luar_apuy, '#38ff46', 0.5); // Opasitas diset ke 0.5
 
 // Algoritma Geofence
 // Tentukan fungsi untuk memeriksa lokasi pengguna
@@ -37,7 +37,7 @@ function onLocationFound(e) {
 
     // Periksa apakah lokasi pengguna berada dalam batas-batas fitur apa pun dalam lapisan GeoJSON
     var userWithinArea = false;
-    BufferUji.eachLayer(function(layer) {
+    AreaLuarApuy.eachLayer(function(layer) {
         if (layer.getBounds().contains(userLocation)) {
             userWithinArea = true;
         }
@@ -51,11 +51,13 @@ function onLocationFound(e) {
         if (userWithinArea && Notification.permission === "granted") {
             showNotification("Saat ini anda sedang berada diluar jalur pendakian!!!");
             showPopup("Saat ini anda sedang berada diluar jalur pendakian!!!");
+            playNotificationSound();
         } else if (userWithinArea && Notification.permission !== "denied") {
             Notification.requestPermission().then(function(permission) {
                 if (permission === "granted") {
                     showNotification("Saat ini anda sedang berada diluar jalur pendakian!!!");
                     showPopup("Saat ini anda sedang berada diluar jalur pendakian!!!");
+                    playNotificationSound();
                 }
             });
         }
@@ -64,14 +66,14 @@ function onLocationFound(e) {
 
 // Fungsi untuk menampilkan notifikasi
 function showNotification(message) {
-    var options = {
-        body: message,
-        icon: 'asset/img/user-icon.png' // Ganti dengan path ke ikon notifikasi yang diinginkan
-    };
-    var notification = new Notification("Peringatan", options);
-    notification.onclick = function() {
-        window.focus();
-    };
+    if (navigator.serviceWorker && navigator.serviceWorker.ready) {
+        navigator.serviceWorker.ready.then(function(registration) {
+            registration.showNotification("Peringatan", {
+                body: message,
+                icon: 'asset/img/user-icon.png' // Ganti dengan path ke ikon notifikasi yang diinginkan
+            });
+        });
+    }
 }
 
 // Fungsi untuk menampilkan pop-up
@@ -98,7 +100,13 @@ function showPopup(message) {
     // Hapus pop-up setelah 15 detik
     setTimeout(function() {
         document.body.removeChild(popup);
-    }, 15000);
+    }, 10000);
+}
+
+// Fungsi untuk memutar suara notifikasi
+function playNotificationSound() {
+    var audio = new Audio('asset/suara/alarmkeluarjalur.mp3');
+    audio.play();
 }
 
 // Dengarkan acara lokasi ditemukan
