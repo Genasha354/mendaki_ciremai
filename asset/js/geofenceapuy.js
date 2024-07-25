@@ -66,14 +66,14 @@ function onLocationFound(e) {
 
 // Fungsi untuk menampilkan notifikasi
 function showNotification(message) {
-    if (navigator.serviceWorker && navigator.serviceWorker.ready) {
-        navigator.serviceWorker.ready.then(function(registration) {
-            registration.showNotification("Peringatan", {
-                body: message,
-                icon: 'asset/img/user-icon.png' // Ganti dengan path ke ikon notifikasi yang diinginkan
-            });
-        });
-    }
+    var options = {
+        body: message,
+        icon: 'asset/img/user-icon.png' // Ganti dengan path ke ikon notifikasi yang diinginkan
+    };
+    var notification = new Notification("Peringatan", options);
+    notification.onclick = function() {
+        window.focus();
+    };
 }
 
 // Fungsi untuk menampilkan pop-up
