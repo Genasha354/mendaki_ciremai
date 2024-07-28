@@ -437,14 +437,14 @@ function onLocationFound(e) {
 
 // Fungsi untuk menampilkan notifikasi
 function showNotification(message) {
-    var options = {
-        body: message,
-        icon: 'asset/img/user-icon.png' // Ganti dengan path ke ikon notifikasi yang diinginkan
-    };
-    var notification = new Notification("Peringatan", options);
-    notification.onclick = function() {
-        window.focus();
-    };
+    navigator.serviceWorker.ready.then(function(registration) {
+        registration.showNotification("Peringatan", {
+            body: message,
+            icon: 'asset/img/user-icon.png', // Ganti dengan path ke ikon notifikasi yang diinginkan
+            vibrate: [200, 100, 200],
+            tag: 'vibration-sample'
+        });
+    });
 }
 
 // Fungsi untuk menampilkan pop-up
