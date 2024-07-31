@@ -66,27 +66,6 @@ var POI_Jalur_Apuy = {
         },
         {
             "type": "Feature",
-            "id": "POI_Apuy.4",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    108.385041,
-                    -6.912451,
-                    1896.549683
-                ]
-            },
-            "geometry_name": "geom",
-            "properties": {
-                "Nama_Lokasi": "Pohon Tumbang 1",
-                "Bujur": "108.385041",
-                "Lintang": "-6.912451",
-                "Ketinggian (MDPL)": "1896.549683\n",
-                "Simbologi": "Waypoint",
-                "Gambar": "asset/img/Apuy/pohon tumbang 1.jpg"
-            }
-        },
-        {
-            "type": "Feature",
             "id": "POI_Apuy.5",
             "geometry": {
                 "type": "Point",
@@ -104,48 +83,6 @@ var POI_Jalur_Apuy = {
                 "Ketinggian (MDPL)": "1939.487793\n",
                 "Simbologi": "Pos",
                 "Gambar": "asset/img/Apuy/pos 2.jpg"
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "POI_Apuy.6",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    108.38714,
-                    -6.913499,
-                    1981.314209
-                ]
-            },
-            "geometry_name": "geom",
-            "properties": {
-                "Nama_Lokasi": "Pohon Tumbang 2",
-                "Bujur": "108.38714",
-                "Lintang": "-6.913499",
-                "Ketinggian (MDPL)": "1981.314209\n",
-                "Simbologi": "Waypoint",
-                "Gambar": "asset/img/Apuy/pohon tumbang 2.jpg"
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "POI_Apuy.7",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    108.389417,
-                    -6.913298,
-                    2047.659546
-                ]
-            },
-            "geometry_name": "geom",
-            "properties": {
-                "Nama_Lokasi": "Pohon Tumbang 3",
-                "Bujur": "108.389417",
-                "Lintang": "-6.913298",
-                "Ketinggian (MDPL)": "2047.659546\n",
-                "Simbologi": "Waypoint",
-                "Gambar": "asset/img/Apuy/pohon tumbang 3.jpg"
             }
         },
         {
@@ -192,27 +129,6 @@ var POI_Jalur_Apuy = {
         },
         {
             "type": "Feature",
-            "id": "POI_Apuy.10",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    108.394924,
-                    -6.911458,
-                    2227.445557
-                ]
-            },
-            "geometry_name": "geom",
-            "properties": {
-                "Nama_Lokasi": "Pohon Tumbang 4",
-                "Bujur": "108.394924",
-                "Lintang": "-6.911458",
-                "Ketinggian (MDPL)": "2227.445557\n",
-                "Simbologi": "Waypoint",
-                "Gambar": "asset/img/Apuy/pohon tumbang 4.jpg"
-            }
-        },
-        {
-            "type": "Feature",
             "id": "POI_Apuy.11",
             "geometry": {
                 "type": "Point",
@@ -230,27 +146,6 @@ var POI_Jalur_Apuy = {
                 "Ketinggian (MDPL)": "2325.291748\n",
                 "Simbologi": "Pos",
                 "Gambar": "asset/img/Apuy/pos 4.jpg"
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "POI_Apuy.12",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    108.396604,
-                    -6.908924,
-                    2335.636719
-                ]
-            },
-            "geometry_name": "geom",
-            "properties": {
-                "Nama_Lokasi": "Pohon Tumbang 5",
-                "Bujur": "108.396604",
-                "Lintang": "-6.908924",
-                "Ketinggian (MDPL)": "2335.636719\n",
-                "Simbologi": "Waypoint",
-                "Gambar": "asset/img/Apuy/pohon tumbang 5.jpg"
             }
         },
         {
