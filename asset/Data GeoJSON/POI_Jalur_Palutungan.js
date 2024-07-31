@@ -87,28 +87,6 @@ var POI_Jalur_Palutungan = {
         },
         {
             "type": "Feature",
-            "id": "POI_Palutungan.5",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    108.405087,
-                    -6.930552,
-                    1791.907471
-                ]
-            },
-            "geometry_name": "geom",
-            "properties": {
-                "Nama_Lokasi": "Pohon Tumbang 1",
-                "Bujur": "108.405087",
-                "Lintang": "-6.930552",
-                "Ketinggian (MDPL)": "1791.907471\n",
-                "Simbologi": "Waypoint"
-                ,
-                "Gambar": "asset/img/Palutungan/pohon tumbang 1.jpg"
-            }
-        },
-        {
-            "type": "Feature",
             "id": "POI_Palutungan.6",
             "geometry": {
                 "type": "Point",
@@ -147,27 +125,6 @@ var POI_Jalur_Palutungan = {
                 "Ketinggian (MDPL)": "2076.861328\n",
                 "Simbologi": "Pos",
                 "Gambar": "asset/img/Palutungan/pos4.jpg"
-            }
-        },
-        {
-            "type": "Feature",
-            "id": "POI_Palutungan.8",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    108.40009,
-                    -6.918296,
-                    2128.824707
-                ]
-            },
-            "geometry_name": "geom",
-            "properties": {
-                "Nama_Lokasi": "Pohon Tumbang 2",
-                "Bujur": "108.40009",
-                "Lintang": "-6.918296",
-                "Ketinggian (MDPL)": "2128.824707\n",
-                "Simbologi": "Waypoint",
-                "Gambar": "asset/img/Palutungan/pohon tumbang 2.jpg"
             }
         },
         {
