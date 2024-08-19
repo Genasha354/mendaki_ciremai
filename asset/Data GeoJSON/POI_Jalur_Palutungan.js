@@ -145,7 +145,7 @@ var POI_Jalur_Palutungan = {
                 "Lintang": "-6.916743",
                 "Ketinggian (MDPL)": "2177.059326\n",
                 "Simbologi": "Pos",
-                "Gambar": "asset/img/Palutungan/Pos 5.jpg"
+                "Gambar": "asset/img/Palutungan/pos 5.jpg"
             }
         },
         {
@@ -166,7 +166,7 @@ var POI_Jalur_Palutungan = {
                 "Lintang": "-6.910979",
                 "Ketinggian (MDPL)": "2361.345947\n",
                 "Simbologi": "Pos",
-                "Gambar": "asset/img/Palutungan/Pos 6.jpg"
+                "Gambar": "asset/img/Palutungan/pos 6.jpg"
             }
         },
         {
