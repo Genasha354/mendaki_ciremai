@@ -19,7 +19,7 @@ var POI_Jalur_Apuy = {
                 "Lintang": "-6.914766",
                 "Ketinggian (MDPL)": "1474.144653\n",
                 "Simbologi": "Pos",
-                "Gambar": "asset/img/Apuy/basecamp.jpg"
+                "Gambar": "asset/img/Apuy/basecamp.jpeg"
             }
         },
         {
