@@ -19,7 +19,7 @@ var POI_Jalur_Palutungan = {
                 "Lintang": "-6.939399",
                 "Ketinggian (MDPL)": "1221.450562\n",
                 "Simbologi": "Pos",
-                "Gambar": "asset/img/Palutungan/pos 1.jpg"
+                "Gambar": "asset/img/Palutungan/basecamp.jpg"
             }
         },
         {
