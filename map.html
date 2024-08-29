@@ -148,8 +148,8 @@
 
       <!--Jalur-->
 
-      <script src="asset/Data GeoJSON/Jalur_Apuy.js"></script>
-      <script src="asset/Data GeoJSON/Jalur_Palutungan.js"></script>
+      <script src="asset/Data GeoJSON/area_jalur_apuy_fiks.js"></script>
+      <script src="asset/Data GeoJSON/area_jalur_palutungan_fiks.js"></script>
       
       <!--Contour-->
       <script src="asset/Data GeoJSON/Contour.js"></script>
@@ -337,8 +337,8 @@
               var properties = feature.properties;
               var popupContent = '<div style="text-align: center;">' +
                 "<strong>" + properties["Jalur"] + "</strong><br>" +
-                "Jarak Tempuh: " + properties["Jarak Tempuh"] + "<br>" +
-                "Beda Tinggi (m): " + properties["Beda Tinggi"] + "<br>" +
+                "Jarak Tempuh: " + properties["Jarak Temp"] + "<br>" +
+                "Beda Tinggi (m): " + properties["Beda Tingg"] + "<br>" +
                 "Relief Kelerengan: " + properties["Kelerengan"] + "<br>";
                 
               layer.bindPopup(popupContent);
@@ -360,8 +360,8 @@
               var properties = feature.properties;
               var popupContent = '<div style="text-align: center;">' +
                 "<strong>" + properties["Jalur"] + "</strong><br>" +
-                "Jarak Tempuh: " + properties["Jarak Tempuh"] + "<br>" +
-                "Beda Tinggi (m): " + properties["Beda Tinggi"] + "<br>" +
+                "Jarak Tempuh: " + properties["Jarak Temp"] + "<br>" +
+                "Beda Tinggi (m): " + properties["Beda Tingg"] + "<br>" +
                 "Relief Kelerengan: " + properties["Kelerengan"] + "<br>";
                 
               layer.bindPopup(popupContent);
@@ -399,13 +399,13 @@
           },{
             label: "Jalur Apuy",
             type: "polyline",
-            color: "#0afff3",
+            color: "#38ff46",
             weight: 3,
             layers: Apuy
           },{
             label: "Jalur Palutungan",
             type: "polyline",
-            color: "#fff80a",
+            color: "#0afcff",
             weight: 3,
             layers: Palutungan
           }
@@ -413,8 +413,8 @@
         
         // Layer Control
         var baseMaps = {
-          "Citra Satelit": World_Imagery,
-          "Topografi" : topographicContour,
+          "World_Imagery": World_Imagery,
+          "World_Topo_Map" : topographicContour,
         };
 
         var JalurApuy = L.layerGroup([POI_Apuy, Apuy]).addTo(map);
@@ -423,7 +423,7 @@
         var overlays = {
           "Jalur Apuy": JalurApuy,
           "Jalur Palutungan": JalurPalutungan,
-          "Garis Kontur": Kontur,
+          "contour": Kontur,
         };
 
         var layerControl = L.control.layers(baseMaps, overlays).addTo(map);        
