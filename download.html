@@ -79,7 +79,7 @@
         <!-- Page Content-->
         <section class="py-5">
             <div class="container px-4 px-lg-5">
-                <div class="card border-0 shadow rounded-3 overflow-hidden">
+                <div class="card border-0 shadow rounded-3 overflow-hidden slide-in">
                     <div class="card-body p-0">
                         <div class="row gx-0">
                             <dv class="col-lg-10 col-xl-6 py-lg-5">
@@ -99,6 +99,25 @@
                 </div>
             </div>
         </section>
+
+        <style>
+            /* Animasi sliding */
+            @keyframes slideInFromLeft {
+                0% {
+                    transform: translateX(-100%);
+                    opacity: 0;
+                }
+                100% {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+        
+            /* Menerapkan animasi ke elemen */
+            .slide-in {
+                animation: slideInFromLeft 1s ease-out forwards;
+            }
+        </style>
     </div>
 
     <!-- Footer-->
