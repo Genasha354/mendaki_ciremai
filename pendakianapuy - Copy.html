@@ -444,10 +444,14 @@ function showNotification(message) {
         body: message,
         icon: 'asset/img/user-icon.png' // Ganti dengan path ke ikon notifikasi yang diinginkan
     };
-    var notification = new Notification("Peringatan", options);
-    notification.onclick = function() {
-        window.focus();
-    };
+
+    if ('serviceWorker' in navigator && navigator.serviceWorker.ready) {
+        navigator.serviceWorker.ready.then(function(registration) {
+            registration.showNotification("Peringatan", options);
+        });
+    } else {
+        console.error("Service Worker not ready. Cannot show notification.");
+    }
 }
 
 // Fungsi untuk menampilkan pop-up
@@ -502,6 +506,7 @@ checkLocation();
 
 // Panggil fungsi checkLocation setiap 15 detik
 setInterval(checkLocation, 15000);
+
 
         // LEGENDA PETA
         const legend = L.control.Legend({
