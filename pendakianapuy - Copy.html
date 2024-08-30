@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
-    <title>Pendakian Apuy </title>
+    <title>Pendakian Palutungan </title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -157,10 +157,13 @@
       <script src="asset/Data GeoJSON/area_jalur_apuy.js"></script>
 
       <!--Area Luar Palutungan-->
-      <script src="asset/Data GeoJSON/area_luar_apuy.js"></script>
+      <script src="asset/Data GeoJSON/area_luar_apuy_fiks.js"></script>
       
       <!--Contour-->
       <script src="asset/Data GeoJSON/kontur_mayor_minor.js"></script>
+
+      <!--area uji notifikasi-->
+      <script> src="asset/Data GeoJSON/area uji notifikasi.js"</script>
 
 
       <script>
@@ -369,7 +372,7 @@
         }
         var areaapuy = createApuyLayer(area_jalur_apuy, '#38ff46');
 
-// Buffer uji
+// area luar Apuy
 function createAreaLuarApuyLayer(geoJSONData, color, opacity) {
     return L.geoJSON(geoJSONData, {
         style: function (feature) {
@@ -394,7 +397,7 @@ function createAreaLuarApuyLayer(geoJSONData, color, opacity) {
 }
 
 // Contoh pemanggilan fungsi dengan opasitas yang diatur
-var AreaLuarApuy = createAreaLuarApuyLayer(area_luar_apuy, '#38ff46', 0.0005); // Opasitas diset ke 0.5
+var AreaLuarApuy = createAreaLuarApuyLayer(area_luar_apuy, '#38ff46', 0.5); // Opasitas diset ke 0.5
 
 // Algoritma Geofence
 // Tentukan fungsi untuk memeriksa lokasi pengguna
@@ -422,13 +425,13 @@ function onLocationFound(e) {
         if (userWithinArea && Notification.permission === "granted") {
             showNotification("Saat ini anda sedang berada diluar jalur pendakian!!!");
             showPopup("Saat ini anda sedang berada diluar jalur pendakian!!!");
-            playNotificationSound();
+            playNotificationSound(); // Memutar suara notifikasi
         } else if (userWithinArea && Notification.permission !== "denied") {
             Notification.requestPermission().then(function(permission) {
                 if (permission === "granted") {
                     showNotification("Saat ini anda sedang berada diluar jalur pendakian!!!");
                     showPopup("Saat ini anda sedang berada diluar jalur pendakian!!!");
-                    playNotificationSound();
+                    playNotificationSound(); // Memutar suara notifikasi
                 }
             });
         }
@@ -441,17 +444,10 @@ function showNotification(message) {
         body: message,
         icon: 'asset/img/user-icon.png' // Ganti dengan path ke ikon notifikasi yang diinginkan
     };
-    
-    if ('serviceWorker' in navigator && 'showNotification' in ServiceWorkerRegistration.prototype) {
-        navigator.serviceWorker.ready.then(function(registration) {
-            registration.showNotification("Peringatan", options);
-        });
-    } else {
-        var notification = new Notification("Peringatan", options);
-        notification.onclick = function() {
-            window.focus();
-        };
-    }
+    var notification = new Notification("Peringatan", options);
+    notification.onclick = function() {
+        window.focus();
+    };
 }
 
 // Fungsi untuk menampilkan pop-up
@@ -475,10 +471,10 @@ function showPopup(message) {
     // Tambahkan elemen pop-up ke dalam body
     document.body.appendChild(popup);
 
-    // Hapus pop-up setelah 10 detik
+    // Hapus pop-up setelah 15 detik
     setTimeout(function() {
         document.body.removeChild(popup);
-    }, 10000);
+    }, 15000);
 }
 
 // Fungsi untuk memutar suara notifikasi
@@ -506,7 +502,6 @@ checkLocation();
 
 // Panggil fungsi checkLocation setiap 15 detik
 setInterval(checkLocation, 15000);
-
 
         // LEGENDA PETA
         const legend = L.control.Legend({
