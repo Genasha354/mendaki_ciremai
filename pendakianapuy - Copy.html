@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
-    <title>Pendakian Palutungan </title>
+    <title>Pendakian Apuy </title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -369,7 +369,7 @@
         }
         var areaapuy = createApuyLayer(area_jalur_apuy, '#38ff46');
 
-// area luar Apuy
+// Buffer uji
 function createAreaLuarApuyLayer(geoJSONData, color, opacity) {
     return L.geoJSON(geoJSONData, {
         style: function (feature) {
@@ -422,13 +422,13 @@ function onLocationFound(e) {
         if (userWithinArea && Notification.permission === "granted") {
             showNotification("Saat ini anda sedang berada diluar jalur pendakian!!!");
             showPopup("Saat ini anda sedang berada diluar jalur pendakian!!!");
-            playNotificationSound(); // Memutar suara notifikasi
+            playNotificationSound();
         } else if (userWithinArea && Notification.permission !== "denied") {
             Notification.requestPermission().then(function(permission) {
                 if (permission === "granted") {
                     showNotification("Saat ini anda sedang berada diluar jalur pendakian!!!");
                     showPopup("Saat ini anda sedang berada diluar jalur pendakian!!!");
-                    playNotificationSound(); // Memutar suara notifikasi
+                    playNotificationSound();
                 }
             });
         }
@@ -441,10 +441,17 @@ function showNotification(message) {
         body: message,
         icon: 'asset/img/user-icon.png' // Ganti dengan path ke ikon notifikasi yang diinginkan
     };
-    var notification = new Notification("Peringatan", options);
-    notification.onclick = function() {
-        window.focus();
-    };
+    
+    if ('serviceWorker' in navigator && 'showNotification' in ServiceWorkerRegistration.prototype) {
+        navigator.serviceWorker.ready.then(function(registration) {
+            registration.showNotification("Peringatan", options);
+        });
+    } else {
+        var notification = new Notification("Peringatan", options);
+        notification.onclick = function() {
+            window.focus();
+        };
+    }
 }
 
 // Fungsi untuk menampilkan pop-up
@@ -468,10 +475,10 @@ function showPopup(message) {
     // Tambahkan elemen pop-up ke dalam body
     document.body.appendChild(popup);
 
-    // Hapus pop-up setelah 15 detik
+    // Hapus pop-up setelah 10 detik
     setTimeout(function() {
         document.body.removeChild(popup);
-    }, 15000);
+    }, 10000);
 }
 
 // Fungsi untuk memutar suara notifikasi
@@ -499,6 +506,7 @@ checkLocation();
 
 // Panggil fungsi checkLocation setiap 15 detik
 setInterval(checkLocation, 15000);
+
 
         // LEGENDA PETA
         const legend = L.control.Legend({
