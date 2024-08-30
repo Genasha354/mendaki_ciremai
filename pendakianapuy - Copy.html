@@ -478,7 +478,7 @@ function showPopup(message) {
     // Hapus pop-up setelah 15 detik
     setTimeout(function() {
         document.body.removeChild(popup);
-    }, 15000);
+    }, 5000);
 }
 
 // Fungsi untuk memutar suara notifikasi
@@ -505,7 +505,7 @@ if ('serviceWorker' in navigator) {
 checkLocation();
 
 // Panggil fungsi checkLocation setiap 15 detik
-setInterval(checkLocation, 15000);
+setInterval(checkLocation, 5000);
 
 
         // LEGENDA PETA
